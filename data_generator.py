@@ -8,7 +8,7 @@ import sys
 
 def get_tr_set_avg_std(data):
     st = time.time()
-    print 'Get std and average of training set'
+    print('Get std and average of training set')
     
     common_sum = 0
     square_sum = 0
@@ -25,8 +25,8 @@ def get_tr_set_avg_std(data):
     square_avg = square_sum / number_non_zero_len
     
     std = np.sqrt( square_avg - common_avg**2 )
-    print 'length of std' + str(std.shape)
-    print time.time() - st
+    print('length of std' + str(std.shape))
+    print(time.time() - st)
     return np.array([common_avg, std])
 
 def get_csv_file(fn):
@@ -100,7 +100,7 @@ def get_h5_dataset(h5_fn, tr_csv_fn, te_csv_fn, tr_wav_fp, te_wav_fp, classes_fn
     
     # Create h5 file
     if os.path.isfile(h5_fn):
-        print '[File Exist] Read file : %s'%(h5_fn)
+        print('[File Exist] Read file : %s'%(h5_fn))
         return h5py.File(h5_fn, 'r')
    
    # get tag index
@@ -119,7 +119,7 @@ def get_h5_dataset(h5_fn, tr_csv_fn, te_csv_fn, tr_wav_fp, te_wav_fp, classes_fn
             data=get_tr_set_avg_std(Xtr), dtype='float32')
     h5f.close()
 
-    print 'H5 File Path %s'%(h5_fn)
+    print('H5 File Path %s'%(h5_fn))
     return h5py.File(h5_fn, 'r')
 
 
