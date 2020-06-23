@@ -34,7 +34,7 @@ def get_mel_spect(fn, args):
     wav = get_wav_librosa(fn, args.sr)
 
     if len(wav) == 0:
-        print 'Read Empty Wave File %s'%(fn)
+        print('Read Empty Wave File %s'%(fn))
         return -2 # Empty wave file 
     else:
         fea = librosa.feature.melspectrogram(wav, sr=args.sr, n_fft=args.ws, 
