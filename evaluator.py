@@ -94,7 +94,7 @@ def evl(gru, pre, va_th=[]):
     #print np.arange(pre.shape[-1])[evl_metrics[:,0]==-100,:]
     out = '[%s] mAP:%.1f%% AUC:%.1f%% F1-CB:%.1f%% R-CB:%.1f%% P-CB:%.1f%% time:%.1f'\
             % (vate, acc[3], acc[4], acc[0], acc[1], acc[2], time.time()-st)
-    print out
+    print(out)
     return va_th, evl_metrics, out
 
 
