@@ -92,7 +92,7 @@ def get_data_fea_target_to_h5(h5, data2target, set_name, num_classes, args):
         sys.stdout.flush()
         
     #print '\n'
-    print '\nExtract feature for %s set: Done'%(set_name)
+    print('\nExtract feature for %s set: Done'%(set_name))
     return X, Y
 
 
