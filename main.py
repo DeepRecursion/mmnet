@@ -44,7 +44,7 @@ args = parser.parse_args()
 
 # Read (if it exist) or generate data for training
 h5_fn = './data/%s_%d_%d_%d_%d.h5'%(args.dn, args.sr, args.ws, args.hs, args.mel)
-h5_fn = '/home/fearofchou/%s_%d_%d_%d_%d.h5'%(args.dn, args.sr, args.ws, args.hs, args.mel)
+h5_fn = '../%s_%d_%d_%d_%d.h5'%(args.dn, args.sr, args.ws, args.hs, args.mel)
 data = get_h5_dataset(h5_fn, training_set_csv_fn, test_set_csv_fn, 
         training_set_wav_fp, test_set_wav_fp, classes_fn, args)
 
