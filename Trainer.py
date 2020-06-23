@@ -69,7 +69,7 @@ class Trainer:
         mean_prior = class_prior.mean()
         PCLW = ( (mean_prior/ class_prior) * ((1-mean_prior)/(1-class_prior)) )**args.beta
         self.PCLW = torch.from_numpy(PCLW.astype('float32')).cuda()
-        print self.PCLW   
+        print(self.PCLW)   
         self.show_dataset_model_params()
         self.load_pretrained_model()
         
@@ -82,13 +82,13 @@ class Trainer:
                try:
                     model_param[k].copy_(pretrained_model['state_dict'][k])
                except:
-                    print '[ERROR] Load pre-trained model'
+                    print('[ERROR] Load pre-trained model')
                     self.model.apply(model_init)
                     break
-            print 'Load Pre_trained Model : ' + self.args.pmp
+            print('Load Pre_trained Model : ' + self.args.pmp)
         
         else:
-            print 'Learning from scrath'
+            print('Learning from scrath')
             self.model.apply(model_init)
             
 
