@@ -39,7 +39,7 @@ def show_model_params(model):
     params = 0
     for i in model.parameters():
         params += i.view(-1).size()[0]
-    print 'Model:' + model.module.model_name + '\t#params:%d'%(params)
+    print('Model:' + model.module.model_name + '\t#params:%d'%(params))
 
 
 class Trainer:
@@ -94,15 +94,15 @@ class Trainer:
 
     def show_dataset_model_params(self):
         # show model structure
-        print self.model
+        print(self.model)
         
         # show params
-        print show_model_params(self.model)
+        print(show_model_params(self.model))
         
         # show the size of training, validation and test set
-        print 'Dataset : ' + self.args.dn
-        print 'Xtr->' + str(self.tr_loader.dataset.X.shape) + '\t\tYtr->' + str(self.tr_loader.dataset.Y.shape)
-        print 'Xte->' + str(self.va_loader.dataset.X.shape) + '\t\tYva->' + str(self.va_loader.dataset.Y.shape)
+        print('Dataset : ' + self.args.dn)
+        print('Xtr->' + str(self.tr_loader.dataset.X.shape) + '\t\tYtr->' + str(self.tr_loader.dataset.Y.shape))
+        print('Xte->' + str(self.va_loader.dataset.X.shape) + '\t\tYva->' + str(self.va_loader.dataset.Y.shape))
         #print 'Xte->' + str(self.te_loader.dataset.X.shape) + '\t\tYte->' + str(self.te_loader.dataset.Y.shape)
 
     def mm_loss(self, target, macro_out, micro_out):
@@ -143,7 +143,7 @@ class Trainer:
             clip_out, _ = self.model(data, self.Xavg, self.Xstd)
             all_pred.extend(F.sigmoid(clip_out).data.cpu().numpy())
 
-        print 'Prediction Time:%1f'%(time.time() - st)
+        print('Prediction Time:%1f'%(time.time() - st))
         return np.array(all_pred)
     
     def fit(self):
@@ -153,7 +153,7 @@ class Trainer:
             
             # set optimizer (SGD)
             lr = self.args.lr ** ((e/(self.args.lrde))+1) 
-            print '\n==> Training Epoch #%d lr=%4f'%(e, lr)
+            print('\n==> Training Epoch #%d lr=%4f'%(e, lr))
             self.optimizer = optim.SGD(self.model.parameters(),
                     lr=lr, momentum=self.args.mom, weight_decay=self.args.wd)
 
@@ -174,7 +174,7 @@ class Trainer:
                         %(e, self.args.ep, batch_idx+1, len(self.tr_loader),
                             loss.item(), time.time() - st))
                 sys.stdout.flush()
-            print '\n'
+            print('\n')
             
             # evaluation
             all_pred = self.predictor(self.va_loader)
